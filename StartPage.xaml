@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+            x:Name="MainTabbedPage"
+             x:Class="RoboticsScoutApp.StartPage"
+             BackgroundColor="White"
+			CurrentPageChanged="MainTabbedPage_CurrentPageChanged"
+             >
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Pre-Game" Padding="10" >
+
+        <StackLayout Orientation="Vertical" Spacing="10">
+
+            <!--Title-->
+            <Label Text="Welcome to the Robotics Scouting App 2022" TextColor="Black" FontSize="50" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+
+            <!--Spacing-->
+            <StackLayout Spacing="10">
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+
+            <!-- Name Entry-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Name:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Entry x:Name="nameEntry" WidthRequest="250" BackgroundColor="White" FontSize="25"/>
+            </StackLayout>
+
+            <!--Match Number Entry-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Match Number:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Entry x:Name="matchNumberEntry" WidthRequest="50" BackgroundColor="White" FontSize="25" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <!--Match Type Picker-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Match Type:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Picker x:Name="matchTypeEntry" FontSize="25" BackgroundColor="White" WidthRequest="175">
+
+                    <Picker.Items>
+                        <x:String>Qualifications</x:String>
+                        <x:String>Eliminations</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </StackLayout>
+
+            <!--Replay Switch-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Replay?" TextColor="Black" FontSize="25"/>
+                <Switch x:Name="replayEntry" Margin="10" Scale="1.5" OnColor="Aqua"/>
+            </StackLayout>
+
+            <!--Team # Entry-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Team Number:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Entry x:Name="teamNumberEntry" WidthRequest="50" BackgroundColor="White" FontSize="25" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <!--Aliance Color Picker-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Aliance Color:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                <Picker x:Name="alianceColorEntry" FontSize="25" BackgroundColor="White" WidthRequest="100">
+
+                    <Picker.Items>
+                        <x:String>Red</x:String>
+                        <x:String>Blue</x:String>
+                    </Picker.Items>
+                    
+                </Picker>
+                
+            </StackLayout>
+
+
+            <!--Preload Cargo Switch-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Preload Cargo?" TextColor="Black" FontSize="25"/>
+                <Switch x:Name="preloadCargoEntry" Margin="10" Scale="1.5" OnColor="Aqua"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Auto" Padding="10" TabIndex="1">
+
+        <StackLayout Orientation="Horizontal" Spacing="20">
+
+            <!--Spacing-->
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical" Spacing="10">
+
+                <StackLayout Spacing="10">
+                    <Label/>
+                </StackLayout>
+
+                <!--Taxi Switch-->
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Taxi?" Margin="10" TextColor="Black" FontSize="25" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Switch x:Name="taxiEntry" Margin="10" Scale="1.5" OnColor="Aqua"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Auto Tech Fouls-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Tech Fouls:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoTechFoulsMinus" Text="-" Clicked="AutoTechFoulsMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoTechFoulsLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoTechFoulsPlus" Text="+" Clicked="AutoTechFoulsPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                
+                <!--Auto Fouls-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Fouls:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoFoulsMinus" Text="-" Clicked="AutoFoulsMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoFoulsLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoFoulsPlus" Text="+" Clicked="AutoFoulsPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+               
+            </StackLayout>
+
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <!--Image with Vertical Spacing-->
+            <!--Add your own image to Drawable and change the source for it to work it is the Image of the Hub-->
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Label/>
+                <Image Source="/Resources/drawable/Robotics.jpg" HorizontalOptions="Start" HeightRequest="620" WidthRequest="400"/>
+            </StackLayout>
+
+            <StackLayout Spacing="10">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Spacing="10">
+
+                <StackLayout Spacing="10">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Auto Lower Hub Shots Made-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Lower Hub Shots Made:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoLowerHubMinus" Text="-" Clicked="AutoLowerHubMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoLowerHubLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoLowerHubPlus" Text="+" Clicked="AutoLowerHubPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Auto Lower Hub Shots Missed-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Lower Hub Shots Missed:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoLowerHubMissMinus" Text="-" Clicked="AutoLowerHubMissMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoLowerHubMissLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoLowerHubMissPlus" Text="+" Clicked="AutoLowerHubMissPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+                
+                
+                <!--Auto Upper Hub Shots Made-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Upper Hub Shots Made:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoUpperHubMinus" Text="-" Clicked="AutoUpperHubMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoUpperHubLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoUpperHubPlus" Text="+" Clicked="AutoUpperHubPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+                
+                <!--Auto Upper Hub Shots Missed-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Upper Hub Shots Missed:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="AutoUpperHubMissMinus" Text="-" Clicked="AutoUpperHubMissMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="autoUpperHubMissLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="AutoUpperHubMissPlus" Text="+" Clicked="AutoUpperHubMissPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+            </StackLayout>
+
+        </StackLayout>
+        
+    </ContentPage>
+    <ContentPage Title="Teleop" Padding="10" TabIndex="2">
+
+        <StackLayout Orientation="Horizontal" Spacing="20">
+
+            <!--Spacing-->
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Spacing="10">
+
+                <StackLayout Spacing="30">
+                    <Label/>
+                </StackLayout>
+
+                <!--Teleop Tech Fouls-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Tech Fouls:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleTechFoulsMinus" Text="-" Clicked="TeleTechFoulsMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleTechFoulsLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleTechFoulsPlus" Text="+" Clicked="TeleTechFoulsPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Teleop Fouls-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Fouls:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleFoulsMinus" Text="-" Clicked="TeleFoulsMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleFoulsLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleFoulsPlus" Text="+" Clicked="TeleFoulsPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <!--Image with Vertical Spacing-->
+            <!--Add your own image to Drawable and change the source for it to work it is the Image of the Hub-->
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Label/>
+                <Image Source="/Resources/drawable/Robotics.jpg" HorizontalOptions="Start" HeightRequest="620" WidthRequest="400"/>
+            </StackLayout>
+
+            <StackLayout Spacing="10">
+                <Label/>
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Spacing="10">
+
+                <StackLayout Spacing="10">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Teleop Lower Hub Shots Made-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Lower Hub Shots Made:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleLowerHubMinus" Text="-" Clicked="TeleLowerHubMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleLowerHubLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleLowerHubPlus" Text="+" Clicked="TeleLowerHubPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Teleop Lower Hub Shots Missed-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Lower Hub Shots Missed:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleLowerHubMissMinus" Text="-" Clicked="TeleLowerHubMissMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleLowerHubMissLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleLowerHubMissPlus" Text="+" Clicked="TeleLowerHubMissPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+
+                <!--Teleop Upper Hub Shots Made-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Upper Hub Shots Made:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleUpperHubMinus" Text="-" Clicked="TeleUpperHubMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleUpperHubLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleUpperHubPlus" Text="+" Clicked="TeleUpperHubPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+
+                <!--Teleop Upper Hub Shots Missed-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Upper Hub Shots Missed:" FontSize="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label/>
+                    <Button x:Name="TeleUpperHubMissMinus" Text="-" Clicked="TeleUpperHubMissMinus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                    <Label x:Name="teleUpperHubMissLabel" Text="0" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button x:Name="TeleUpperHubMissPlus" Text="+" Clicked="TeleUpperHubMissPlus_Clicked" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+                </StackLayout>
+            </StackLayout>
+      
+
+
+        </StackLayout>
+        
+    </ContentPage>
+
+    <ContentPage Title= "Climb" Padding= "10" TabIndex="4">
+        <StackLayout Orientation="Vertical" Spacing="10">
+
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+            </StackLayout>
+            
+            <!--Climb Level-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Climb level:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                <Picker x:Name="climbLevelEntry" FontSize="25" WidthRequest="150">
+
+                    <Picker.Items>
+                        <x:String>Low</x:String>
+                        <x:String>Mid</x:String>
+                        <x:String>High</x:String>
+                        <x:String>Traverse</x:String>
+                        <x:String>None</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </StackLayout>
+
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <!--Attempted Climb Level-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Attempted Climb Level:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                <Picker x:Name="attemptedClimbLevelEntry" FontSize="25" WidthRequest="150">
+
+                    <Picker.Items>
+                        <x:String>Low</x:String>
+                        <x:String>Mid</x:String>
+                        <x:String>High</x:String>
+                        <x:String>Traverse</x:String>
+                        <x:String>None</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </StackLayout>
+
+            <StackLayout Spacing="20">
+                <Label/>
+                <Label/>
+            </StackLayout>
+
+            <!--Climber Side Axis-->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Climber Side Axis:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                <Picker x:Name="climberSideAxisEntry" FontSize="25" WidthRequest="150">
+
+                    <Picker.Items>
+                        <x:String>Left</x:String>
+                        <x:String>Right</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage>
+    
+    <ContentPage Title="Field" Padding="10" TabIndex="3">
+
+        <!--Ishan for this I need more of the counters and I need the field to be split up into Top and Bottton
+        Far back is Safety, Far distance is in front of Safety, and Clost distance needs to be right in front of the hub
+        Make 6 counters with an image split into the 6 correct sectors-->
+
+    </ContentPage>
+    <ContentPage Title="Post Match" Padding="10" TabIndex="4">
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+
+            <!--Left Side-->
+            <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="Start">
+
+
+                <StackLayout Spacing="20">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+                
+                <!--Defense Played-->
+                 <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="How much defense played:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                    <Picker x:Name="howMuchDefense" FontSize="25" WidthRequest="250">
+
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Some</x:String>
+                            <x:String>A lot</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                </StackLayout>
+
+                <!--Defense Ability-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="How good at playing defense:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                    <Picker x:Name="howGoodDefense" FontSize="25" WidthRequest="200">
+
+                        <Picker.Items>
+                            <x:String>No Defense</x:String>
+                            <x:String>Bad</x:String>
+                            <x:String>Okay</x:String>
+                            <x:String>Good</x:String>
+                            <x:String>Excellent</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                </StackLayout>
+
+                <!--Defended Against-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="How much defended against:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                    <Picker x:Name="howMuchDefendedAgainst" FontSize="25" WidthRequest="200">
+
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Some</x:String>
+                            <x:String>A lot</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                </StackLayout>
+                
+                <!--Strength of Opposing Defense-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Strength of Opposing Defense:" FontSize="25" TextColor="Black" HorizontalOptions="Start"/>
+                    <Picker x:Name="opposingDefenseStrength" FontSize="25" WidthRequest="250">
+
+                        <Picker.Items>
+                            <x:String>No Defense</x:String>
+                            <x:String>Bad</x:String>
+                            <x:String>Okay</x:String>
+                            <x:String>Good</x:String>
+                            <x:String>Excellent</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                </StackLayout>
+            </StackLayout>
+
+            <!--Spacing-->
+            <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="Center">
+
+                <Label Text="---------------" TextColor="White" FontSize="30"/>
+                <Label Text="---------------" TextColor="White" FontSize="30"/>
+
+            </StackLayout>
+            
+            <!--Right Side-->
+            <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="End">
+
+                <StackLayout Spacing="50">
+                    <Label/>
+                    <Label/>
+                </StackLayout>
+                
+                <!--Break Down Switch-->
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Robot break down?" Margin="10" TextColor="Black" FontSize="25" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Switch x:Name="breakdownEntry" Margin="10" Scale="1.5" OnColor="Aqua"/>
+                </StackLayout>
+                
+                
+
+                <!--Comments-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Comments:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry x:Name="commentsEntry" WidthRequest="200" BackgroundColor="White" FontSize="25"/>
+                </StackLayout>
+
+                <!--New File Picker/Save Button-->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Start New File?" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
+                    <Picker x:Name="filePic" FontSize="25" BackgroundColor="White" WidthRequest="50">
+
+                        <Picker.Items>
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                    <Button Text="Save" x:Name="SaveButton" Clicked="SaveButton_Clicked" FontSize="25"/>
+                </StackLayout>
+
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
